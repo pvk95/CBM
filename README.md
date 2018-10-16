@@ -1,4 +1,4 @@
-Genome Indexing: BWT
-Seeding: FM-index
-DP alignment: Semi-global alignment
-Score: Not decided 
+Genome Indexing: BWT＜/br＞
+Seeding: FM-index＜/br＞
+DP alignment: Semi-global alignment＜/br＞
+Score: Not decided ＜/br＞
