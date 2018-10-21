@@ -16,6 +16,7 @@ Score: As in bowtie2: [bowtie manual](http://bowtie-bio.sourceforge.net/bowtie2/
 	    - cigar .. CIGAR string representing the alignment
 - read FASTQ  
     -read the sequence and filter all 'N' in the sequence.
+    -add '$' at the end of sequence.
 - BWT index
     - Generate all rotations of genome strings.
     - Sort the matrix lexicographically and only keep the last column L
