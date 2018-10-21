@@ -1,7 +1,7 @@
 Genome Indexing: BWT  
 Seeding: FM-index  
 DP alignment: Semi-global alignment  
-Score: As in bowtie2: [http://bowtie-bio.sourceforge.net/bowtie2/manual.shtml#end-to-end-alignment-score-example](bowtie manual)  
+Score: As in bowtie2: [bowtie manual](http://bowtie-bio.sourceforge.net/bowtie2/manual.shtml#end-to-end-alignment-score-example)  
 
 
 ### Done:
