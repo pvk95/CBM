@@ -15,7 +15,7 @@ Score: As in bowtie2: [bowtie manual](http://bowtie-bio.sourceforge.net/bowtie2/
 	    - pos .. position of the left end of the read in given piece of genome, indexing starts from 1
 	    - cigar .. CIGAR string representing the alignment
 - read FASTQ  
-    -read the sequence and filter all 'N' in the sequence.
+    -read the sequence and filter all 'N' in the sequence.  
     -add '$' at the end of sequence.
 - BWT index
     - Generate all rotations of genome strings.
