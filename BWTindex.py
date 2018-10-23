@@ -16,10 +16,11 @@ from collections import Counter as count
 def readfasta(filename):
     #Loading FastA data
     fasta_sequences = str(SeqIO.read(filename,'fasta').seq)
+    fasta_id = SeqIO.read(filename,'fasta').id
     #Delete N and add $
     seq = fasta_sequences.replace("N","") + "$"
     
-    return seq
+    return seq, fasta_id
 
 #Function to generate the sorted rotations of genome string
 def roatstring(seq):
@@ -82,12 +83,15 @@ def occ_matrix(seq, L):
     return matr
 
 ############Produce results:L column, C array and Occ matirx
-seq = readfasta("genome.chr22.5K.fa")
+seq,fasta_id = readfasta("genome.chr22.5K.fa")
 L = roatstring(seq) 
 C_array = C(seq, L)
 matrix = occ_matrix(seq, L)
 
 ############Write out the results
+g = open("fasta_id.txt", "a")
+g.write(fasta_id)
+g.close
 f = open("BWT_L_column.txt", "a")
 f.write(L)
 f.close
