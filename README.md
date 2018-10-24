@@ -1,4 +1,4 @@
-##### GroupB aligner
+# GroupB aligner
 
 Aligner created by GroupB Computational Biomedicine students.
 **Authors:** Brynja Sigurpalsdottir, Hana Parizkova, Karthik Pattisapu, Modestas Filipavicius, Zhi Ye
@@ -11,20 +11,20 @@ Aligner created by GroupB Computational Biomedicine students.
 ### Usage
 Run `run_alignment.py`.
 
-## Required arguments
+#### Required arguments
 `--fastq` ... names of one or more FastQ files with reads to be aligned
 `--genomeIndexDir` ... directory where genome index is stored, or where it should be stored if we run indexing as well
 `--outDir` ... directory where the resulting SAM file should be saved
 
-## Other basix arguments
+#### Other basix arguments
 `--runIndexing` ... run also indexing of the genome; by default indexing is **not** run
 `--genomeFasta` ... name of Fasta file with the genome sequence; required if `--runIndexing` is present, will be ignored if `--runIndexing` is not present
 
-## Advanced arguments
+#### Advanced arguments
 `--overhang` ... float value specifiying how large overhang over the length of the read will be taken into account when running DP alignment; default value `0.33`, i.e. the alignment will be computed on a piece of genome of lenght `1.33*readLength`
 `--seedLength` ... length of seeds in base pairs; default `10`
 `--numberOfSeeds` ... number of seeds to be tried for each read; default value `3`
 
-## Examples
+#### Examples
 Basic usage, genome index already present: `python run_alignment.py --fastq FILE.FASTQ --genomeIndexDir GENOMEDIR --outDir OUTDIR`
 If we want to run indexing of genome as well: `python run_alignment.py --fastq FILE.FASTQ --genomeIndexDir GENOMEDIR --outDir OUTDIR --runIndexing`
