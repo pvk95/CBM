@@ -17,7 +17,7 @@ Run `run_alignment.py`.
 - `--genomeIndexDir` ... directory where genome index is stored, or where it should be stored if we run indexing as well
 - `--outDir` ... directory where the resulting SAM file should be saved
 
-#### Other basix arguments
+#### Other basic arguments
 - `--runIndexing` ... run also indexing of the genome; by default indexing is **not** run
 - `--genomeFasta` ... name of Fasta file with the genome sequence; required if `--runIndexing` is present, will be ignored if `--runIndexing` is not present
 
