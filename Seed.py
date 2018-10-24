@@ -1,4 +1,3 @@
-
 '''
 TO DO: Define exceptions
 '''
@@ -77,8 +76,9 @@ class Seeds():
             start=self.get_index(char,start_rank)
             end=self.get_index(char,end_rank)
         
-        for i in range(start,end+1):
+        for i in range(start+1,end+1):
             locations.append(S[i])
+        assert(locations!=None)
         return locations
 
 
