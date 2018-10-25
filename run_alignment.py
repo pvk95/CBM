@@ -27,7 +27,7 @@ parser.add_argument("--fastq", required=True, nargs='+',    #names of FastQ file
                     help="Path to input FastQ files")
 parser.add_argument("--genomeIndexDir", required=True,
                     help="Path do the directory where genome index is/should be stored")
-parser.add_argument("--outfile", required=True,
+parser.add_argument("--outFile", required=True,
                     help="Path and name of the output SAM file")
 parser.add_argument("--runIndexing", action="store_true",
                     help="Run also indexing of the genome; if not specified, the genome index will be looked for in genomeIndexDir")
@@ -49,7 +49,7 @@ if args.runIndexing and args.genomeFasta is None:
 # Set the paths
 fastqs = args.fastq     #list with FastQ files to be processed
 indexDir = args.genomeIndexDir
-outputFile = args.outfile
+outputFile = args.outFile
 genomeFile = args.genomeFasta
 overhang = args.overhang
 seedLength=args.seedLength
