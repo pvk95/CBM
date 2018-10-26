@@ -1,5 +1,5 @@
 import math
-
+import random
 '''
 Computes semi-global alignment of the read against a piece of genome. Leading and trailing gaps
 are not penalized. Scoring according to bowtie2: 0 for match, -6 for mismatch, -5 gap opening,
@@ -9,6 +9,48 @@ Returns dictionary with three items:
 	pos .. position of the left end of the read in given piece of genome, indexing starts from 1
 	cigar .. CIGAR string representing the alignment
 '''
+
+###############Main function, called from run_alignment.py
+
+def get_alignment(read,genome,_n_bp,numberOfSeeds,overhang,seeding):
+    '''
+    n_bp: The no. of base pairs to consider for seedong
+    read: The read that is required to be aligned
+    genome: The reference genome
+    overhang: The no. of bp to overhang before and after
+    read indexing from 0 treated as str
+    genome indexing from 0 treated as str
+    '''
+    n_bp=_n_bp
+    read_len=len(read)
+    gen_len=len(genome)
+    optimal_alignment=[0,0,0,0,0,0,-math.inf]
+    for i in range(numberOfSeeds):
+        # Generate a random seed of n_bp length 
+        idx_seed=random.choice(range(read_len-n_bp+1))
+        seed=read[idx_seed:idx_seed+n_bp] 
+        locs=seeding.generate_seeds(seed)
+        #Find the starting and end positions for the reference genome
+        n_before=idx_seed
+        n_after=read_len-n_before-n_bp
+        print("Seed ",i)
+        if(locs==None):
+            return None
+        for k,pos in enumerate(locs):
+            if(pos==None):
+                continue
+            assert(seed==genome[pos:pos+n_bp])#
+            genome_start=pos-n_before-int(n_before*overhang)
+            genome_end=pos+n_bp+n_after+int(n_after*overhang)
+            if(genome_start)<0:
+                genome_start=0
+            if(genome_end)>gen_len-1:
+                genome_end=gen_len-1
+            gen_seq=genome[genome_start:genome_end]
+            output=DP_semi_global_alignment(read,gen_seq)
+            if(output[6]>optimal_alignment[6]):
+                optimal_alignment=output
+    return optimal_alignment
 
 
 ### Two helper functions
@@ -43,7 +85,7 @@ def compressCIGAR(string):
     	res += string[i]
     return res
 
-######## The main function #########################
+######## Computing DP #########################
 def DP_semi_global_alignment(read, genome):
 	n = len(read)
 	m = len(genome)
@@ -146,4 +188,12 @@ def DP_semi_global_alignment(read, genome):
 	cigarString = compressCIGAR(''.join(cigar)[::-1])
 
 	# return; in SAM, positions are indexed from 1, hence we add 1 to left
-	return {'score':score, 'pos':left+1, 'cigar':cigarString}
+	''' list of: 
+		[ read sequence, 
+		reverse bitwise flag (will be changed from run_alignment if needed),
+		secondary alignment bitwise flag (always 0),
+		position,
+		CIGAR string,
+		score]
+	'''
+	return [read, 0, 0, 'ref', left+1, cigarString, score]
