@@ -54,7 +54,7 @@ class Seeds():
         valid_chars=self.__valid_chars
         S=self.__S
         index=len(Q)-1
-        char=chr(Q[index])
+        char=Q[index]
         if char not in valid_chars:
             raise Exception("String character mismatch")
         #The range of char in F [start,end] both inclusive
@@ -62,7 +62,7 @@ class Seeds():
         locations=[]
         while index>0:
             index=index-1
-            char=chr(Q[index])
+            char=Q[index]
             if char not in valid_chars:
                 raise Exception("Invalid character " + char)
             before_rank=self.get_rank(char,start-1)
