@@ -29,3 +29,4 @@ Run `run_alignment.py`.
 #### Examples
 - Basic usage, genome index already present: `python run_alignment.py --fastq FILE.FASTQ --genomeIndexDir GENOMEDIR --genomeFasta GENOME.FASTA --outFile OUTFILE`
 - If we want to run indexing of genome as well: `python run_alignment.py --fastq FILE.FASTQ --genomeIndexDir GENOMEDIR --genomeFasta GENOME.FASTA --outFile OUTFILE --runIndexing`
+- Example run: `python run_alignment.py --fastq ../data_small/output_tiny_30xCov1.fq --genomeIndexDir ../results --outFile ../results/out.sam --runIndexing --genomeFasta ../data_small/genome.chr22.5K.fa`
