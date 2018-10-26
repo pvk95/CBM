@@ -36,7 +36,7 @@ class BWT():
         #Compress the first column
         keys=list(self.F.keys())
         vals=list(self.F.values())
-        self.F[keys[0]]=[0,vals[0]+1]
+        self.F[keys[0]]=[0,vals[0]]
         for i in range(1,len(keys)):
             temp=self.F[keys[i-1]][1]
             self.F[keys[i]]=[temp,temp+vals[i]]
