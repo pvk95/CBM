@@ -138,7 +138,13 @@ for i,readName in enumerate(sequences):
     outFw=get_alignment(read,reference_genome,seedLength,numberOfSeeds,overhang,seeding)
     readRev=reverseComplement(read)
     outRev=get_alignment(readRev,reference_genome,seedLength,numberOfSeeds,overhang,seeding)
-    if outFw['score'] > outRev['score']:
+    if(outFw==None):
+        out=outRev
+        out['f1'] = 1
+    elif(outRev==None):
+        out = outFw
+        out['f1'] = 0
+    elif outFw['score'] > outRev['score']:
         out = outFw
         out['f1'] = 0
     else:
