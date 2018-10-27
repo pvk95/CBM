@@ -10,8 +10,7 @@ Created on Tue Oct 23 17:07:29 2018
     Input: 
         Dictionary with
         key: qname = read id
-        values: [seq = sequence
-                f1 = bitwise flag reporting whether it's coming form the reverse
+        values: [f1 = bitwise flag reporting whether it's coming form the reverse
                     string or the forward string
                 f2 = bitwise flag reporting secondary alignments - all false
                 rname: reference name (same for everything in our case)
@@ -22,33 +21,16 @@ Created on Tue Oct 23 17:07:29 2018
         Sam file with the following header:
             qname seq f1 f2 rname pos CIGAR    
 """
-import csv
-
-def output_SAM(outfile, d):
-    # USING NO LIBRARIES
-    header = ['read id', 'seq', 'reverse', 'secondary_alignment', 'reference',
-              'pos', 'cigarstring'] 
-    with open(outfile, 'w') as o:
-        o.write('\t'.join(header))
-        o.write('\n')
-        for key, value in d.items():
-            o.write(key + '\t')
-            for item in value:
-                o.write(str(item))
-                o.write('\t')
-            o.write('\n')
-    o.close()
+import csv  
     
-
-def output_SAM2(outfile, d):
-    # USING CSV LIBRARY
-    header = ['read id', 'seq', 'reverse', 'secondary_alignment', 'reference',
-              'pos', 'cigarstring'] 
+def output_SAM(outfile, header, d):
     with open(outfile, "w") as o:
         writer = csv.writer(o, delimiter='\t')
-        writer.writerow(header)
+        o.write(''.join(header))
         for key, value in d.items():
-            writer.writerow([key, value[0], value[1], value[2], value[3], value[4], value[5]])
-            # If all values are strings we can also to '\t'.join(value) and replace       
+            if value == None:
+                writer.writerow([key, 'None'])
+            else:
+                writer.writerow([key, value[0], value[1], value[2], value[3], value[4]])
     o.close()
     
