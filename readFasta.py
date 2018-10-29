@@ -26,4 +26,4 @@ def readFasta(filename,verbose=0):
         D[key] = ''.join(lines)
         if verbose:
             print("Sequence %s of length %d read" % (key,len(D[key])))
-    return D
+    return header, D
