@@ -133,14 +133,16 @@ seeding=Seeds(F,L,S,valid_chars)
 alignments={}
 
 for i,readName in enumerate(sequences):
-    print("Processing read %d...."%i)
+    if i%10 == 0:
+        print("Processing read %d...."%i)
     read=reads[readName][0]
     outFw=get_alignment(read,reference_genome,seedLength,numberOfSeeds,overhang,seeding)
     readRev=reverseComplement(read)
     outRev=get_alignment(readRev,reference_genome,seedLength,numberOfSeeds,overhang,seeding)
     if(outFw==None):
         out=outRev
-        out[1] = 1
+        if out != None:
+            out[1] = 1
     elif(outRev==None):
         out = outFw
         out[1] = 0
