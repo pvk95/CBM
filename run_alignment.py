@@ -72,9 +72,12 @@ valid_chars_file_name = "{}/valid_chars.json".format(indexDir)
 
 
 ####### read genome sequence
-header, reference_genome=readFasta(genomeFile,verbose=0)
-assert len(reference_genome) == 1 #case with more than one sequence in the genomeFile not yet implemented
-reference_genome = next(iter(reference_genome.values()))
+ref=readFasta(genomeFile,verbose=0)
+assert len(ref) == 1 #case with more than one sequence in the genomeFile not yet implemented
+for k,v in ref.items():
+    header = k
+    reference_genome = v
+    lengthRef = len(reference_genome)
 
                        
 if args.runIndexing:
@@ -156,6 +159,6 @@ for i,readName in enumerate(sequences):
 
 ################## output in SAM
 print("Printing into SAM...")
-output_SAM(outputFile, header, alignments)
+output_SAM(outputFile, header, lengthRef, alignments)
 
 print("JOB SUCCESSFULLY FINISHED.")
