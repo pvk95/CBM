@@ -10,8 +10,6 @@ def readFasta(filename,verbose=0):
         fp = gzip.open(filename, 'r')
     else:
         fp = open(filename, 'r')
-    # Get the HD and SQ lines
-    header = fp.readlines()[0:2]
     # split at headers
     data = fp.read().split('>')
     fp.close()
@@ -26,4 +24,4 @@ def readFasta(filename,verbose=0):
         D[key] = ''.join(lines)
         if verbose:
             print("Sequence %s of length %d read" % (key,len(D[key])))
-    return header, D
+    return D
