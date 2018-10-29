@@ -33,7 +33,7 @@ def get_alignment(read,genome,_n_bp,numberOfSeeds,overhang,seeding):
         #Find the starting and end positions for the reference genome
         n_before=idx_seed
         n_after=read_len-n_before-n_bp
-        print("Seed ",i)
+        #print("Seed ",i)
         if(locs==None):
             return None
         for k,pos in enumerate(locs):
