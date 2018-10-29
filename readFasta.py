@@ -10,6 +10,8 @@ def readFasta(filename,verbose=0):
         fp = gzip.open(filename, 'r')
     else:
         fp = open(filename, 'r')
+    # Get the HD and SQ lines
+    header = fp.readlines()[0:2]
     # split at headers
     data = fp.read().split('>')
     fp.close()
