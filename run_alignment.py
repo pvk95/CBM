@@ -15,7 +15,7 @@ from readFastQ import readfastq
 from readFasta import readFasta
 from dp_alignment import get_alignment
 from basicDNAfunctions import reverseComplement
-from output_SAM import output_SAM2 
+from output_SAM import output_SAM 
 
 
 
@@ -72,7 +72,7 @@ valid_chars_file_name = "{}/valid_chars.json".format(indexDir)
 
 
 ####### read genome sequence
-reference_genome=readFasta(genomeFile,verbose=0)
+header, reference_genome=readFasta(genomeFile,verbose=0)
 assert len(reference_genome) == 1 #case with more than one sequence in the genomeFile not yet implemented
 reference_genome = next(iter(reference_genome.values()))
 
@@ -154,6 +154,6 @@ for i,readName in enumerate(sequences):
 
 ################## output in SAM
 print("Printing into SAM...")
-output_SAM2(outputFile, alignments)
+output_SAM(outputFile, header, alignments)
 
 print("JOB SUCCESSFULLY FINISHED.")
