@@ -12,7 +12,7 @@ def output_SAM(outfile, header, d):
         writer = csv.writer(o, delimiter='\t')
         o.write(''.join(header))
         for key, value in d.items():
-            if len(value) == 1:
+            if value == None:
                 writer.writerow([key, 4, '*', 0, 0, '*', '*', 0, 0, '*', '*'])
             else:
                 if value[1] == 1:
