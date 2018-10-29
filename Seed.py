@@ -69,7 +69,7 @@ class Seeds():
             start_rank=self.get_rank(char,start)
             end_rank=self.get_rank(char,end)
             if(end_rank==before_rank):
-                print("Seed not found")
+                # print("Seed not found")
                 return None
             if(start_rank==0):
                 start_rank=1
