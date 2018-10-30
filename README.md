@@ -10,7 +10,7 @@ Aligner created by GroupB Computational Biomedicine students.
 - **Alignment:** Semi-global dynamic-programming alingment with affine gap penalties; scoring as in bowtie2
 
 ### Usage
-**Requires Python version 3.6.6 or newer.**
+**Requires Python version 3.6.6 or newer. In case of any run-time errors please update to Python 3.7.1 and update all the libraries.**
 
 Run `run_alignment.py`.
 
