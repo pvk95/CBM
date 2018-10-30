@@ -13,7 +13,7 @@ def output_SAM(outfile, header, d):
         o.write(''.join(header))
         for key, value in d.items():
             if len(value) == 1:
-                writer.writerow([key, 4, '*', 0, 0, '*', '*', 0, 0, '*', 0])
+                writer.writerow([key, 4, '*', 0, 0, '*', '*', 0, 0, '*', '*'])
             else:
                 if value[1] == 1:
                     value[1] = 16
